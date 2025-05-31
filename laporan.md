@@ -95,45 +95,49 @@ Dataset diambil dari: [Heart Failure Prediction Dataset](https://www.kaggle.com/
     - **MaxHR:** Rata-rata 136.81 bpm, rentang 120-140 bpm menunjukkan variasi besar.
     - **Oldpeak:** Rata-rata 0.89 , nilai negatif (misalnya -2 tidak wajar).
 3.  **Fitur Kategorik:**
-    ![alt text](image-1.png) 
-    - Pasien Berjenis kelamin Laki-laki Lebih berpotensi mengalami serangan jantung dibandingkan pasien Wanita
+    ![alt text](image-1.png)
 
+    - Pasien Berjenis kelamin Laki-laki Lebih berpotensi mengalami serangan jantung dibandingkan pasien Wanita
 
     ![alt text](image.png)
 
+- Pasien dengan `ChestPainType` ASY (asymptomatic) cenderung memiliki risiko tinggi sekitar 79% positif terkena serangan jantung.
+  ![alt text](image-2.png)
 
-  - Pasien dengan `ChestPainType` ASY (asymptomatic) cenderung memiliki risiko tinggi sekitar 79% positif terkena serangan jantung.
-    ![alt text](image-2.png)
-    - Pasien Dengan`FastingBS`/ Gula darah puasa (> 120 mg/dL ) 48% berpotensi terkena serangan jantung ,Sedangakan Pasien dengan Gula darah puasa (≤ 120 mg/dL ) 79% terkena serangan jantung.
+  - Pasien Dengan`FastingBS`/ Gula darah puasa (> 120 mg/dL ) 48% berpotensi terkena serangan jantung ,Sedangakan Pasien dengan Gula darah puasa (≤ 120 mg/dL ) 79% terkena serangan jantung.
 
-    ![alt text](image-3.png)
-    RestingECG	Kategorik	Hasil elektrokardiogram saat istirahat (Normal, ST: ST-T wave abnormality, LVH: Left ventricular hypertrophy)
+  ![alt text](image-3.png)
+  RestingECG Kategorik Hasil elektrokardiogram saat istirahat (Normal, ST: ST-T wave abnormality, LVH: Left ventricular hypertrophy)
 
-    - Pasien denagan RestingECG 
-      ```
-                    Sehat     Serangan jantung
-      LVH           43%             57%
-      Normal        48%             52%
-      ST            34%             66%
-   
-   ![alt text](image-4.png)
-   - `ExerciseAngina` = Y berkorelasi kuat dengan penyakit jantung 85%.
+  - Pasien denagan RestingECG
+    ```
+                  Sehat     Serangan jantung
+    LVH           43%             57%
+    Normal        48%             52%
+    ST            34%             66%
+    ```
 
-   ![alt text](image-5.png)
-   - `ST_Slope Flat Memiliki potensi jauh lebih tinggi dibandingakn dengan upsloping maupun downsloping 
+![alt text](image-4.png)
+
+- `ExerciseAngina` = Y berkorelasi kuat dengan penyakit jantung 85%.
+
+![alt text](image-5.png)
+
+- `ST_Slope Flat Memiliki potensi jauh lebih tinggi dibandingakn dengan upsloping maupun downsloping
+
 ```
 
 Persentase HeartDisease per kategori:
 
 Persentase HeartDisease per kategori Sex:
 HeartDisease          0          1
-Sex                               
+Sex
 F             74.093264  25.906736
 M             36.827586  63.172414
 
 Persentase HeartDisease per kategori ChestPainType:
 HeartDisease           0          1
-ChestPainType                      
+ChestPainType
 ASY            20.967742  79.032258
 ATA            86.127168  13.872832
 NAP            64.532020  35.467980
@@ -141,38 +145,36 @@ TA             56.521739  43.478261
 
 Persentase HeartDisease per kategori FastingBS:
 HeartDisease          0          1
-FastingBS                         
+FastingBS
 0             51.988636  48.011364
 1             20.560748  79.439252
 
 Persentase HeartDisease per kategori RestingECG:
 HeartDisease          0          1
-RestingECG                        
+RestingECG
 LVH           43.617021  56.382979
 Normal        48.369565  51.630435
 ST            34.269663  65.730337
 
 Persentase HeartDisease per kategori ExerciseAngina:
 HeartDisease            0          1
-ExerciseAngina                      
+ExerciseAngina
 N               64.899452  35.100548
 Y               14.824798  85.175202
 
 Persentase HeartDisease per kategori ST_Slope:
 HeartDisease          0          1
-ST_Slope                          
+ST_Slope
 Down          22.222222  77.777778
 Flat          17.173913  82.826087
 Up            80.253165  19.746835
 
 ```
+
 ---
+
 4.  **Korelasi:**
-![alt text](image-6.png)
-    - Korelasi positif kuat: `Oldpeak` vs `HeartDisease` .
-    - Korelasi negatif kuat: `MaxHR` vs `HeartDisease` .
-
-
+    ![alt text](image-6.png) - Korelasi positif kuat: `Oldpeak` vs `HeartDisease` . - Korelasi negatif kuat: `MaxHR` vs `HeartDisease` .
 
 ## **Data Preparation**
 
@@ -266,7 +268,7 @@ Pada tahap ini, data diproses agar siap untuk pemodelan machine learning. Langka
   $$
 - Hasil:
   ```
-  Accuracy: [ISI NILAI DI SINI]
+  Accuracy: 0.8804
   ```
 
 ### **2. Classification Report**
@@ -275,17 +277,25 @@ Pada tahap ini, data diproses agar siap untuk pemodelan machine learning. Langka
 - **Recall:** Proporsi aktual positif yang dikenali.
 - **F1-score:** Harmoni antara precision dan recall.
 - Hasil:
+
   ```
-  [ISI NILAI DI SINI]
+  Classification Report:
+                precision    recall  f1-score   support
+
+            0       0.85      0.89      0.87        82
+            1       0.91      0.87      0.89       102
+
+      accuracy                           0.88       184
+    macro avg       0.88      0.88      0.88       184
+    weighted avg       0.88      0.88      0.88       184
   ```
-  _(Salin output dari `print(classification_report(y_test, y_pred))` di sini, termasuk precision, recall, f1-score, dan support untuk setiap kelas)._
 
 ### **3. Confusion Matrix**
 
 - Visualisasi matriks kebingungan menunjukkan:
   - True Positives (TP), True Negatives (TN), False Positives (FP), False Negatives (FN).
 - Hasil membantu analisis kesalahan model.  
-  ![Confusion Matrix](assets/image-confusion-matrix.png)
+  ![alt text](image-7.png)
 
 ### **4. ROC Curve dan AUC Score**
 
@@ -293,16 +303,15 @@ Pada tahap ini, data diproses agar siap untuk pemodelan machine learning. Langka
 - AUC (Area Under Curve) mendekati 1 menandakan performa baik.
 - Hasil:
   $$
-  \text{AUC Score} = [ISI NILAI DI SINI]
+  \text{AUC Score} = 0.93
   $$
-  _(Isi nilai AUC dari output `roc_auc_score(y_test, y_proba)` di sini)._  
-  ![ROC Curve](assets/image-roc-curve.png)
+  ![alt text](image-8.png)
 
 ### **5. Feature Importance**
 
 - Koefisien absolut dari model menunjukkan fitur paling berpengaruh.
 - Visualisasi 10 fitur teratas membantu interpretasi faktor risiko penyakit jantung.  
-  ![Feature Importance](assets/image-feature-importance.png)
+  ![alt text](image-9.png)
 
 ---
 
@@ -331,59 +340,12 @@ Data baru untuk simulasi prediksi:
 ### **Hasil Prediksi**
 
 - **Prediksi Risiko Penyakit Jantung:**
+
   ```
-  [ISI NILAI DI SINI]
+  === CONTOH PREDIKSI ===
+
+  Hasil Prediksi:
+  Input Data: {'Age': 58, 'RestingBP': 140, 'Cholesterol': 289, 'FastingBS': 0, 'MaxHR': 160, 'Oldpeak': 1.2, 'Sex': 'M', 'ChestPainType': 'ATA', 'RestingECG': 'Normal', 'ExerciseAngina': 'N', 'ST_Slope': 'Up'}
+  Prediksi: Tidak Ada Penyakit Jantung
+  Probabilitas: 7.85%
   ```
-  _(Isi dengan hasil dari kode, misalnya: "Penyakit Jantung" atau "Tidak Ada Penyakit Jantung")._
-- **Probabilitas Prediksi:**
-  - **Positif (Penyakit Jantung):** [ISI NILAI DI SINI]%
-  - **Negatif (Tidak Ada Penyakit Jantung):** [ISI NILAI DI SINI]%  
-    _(Isi nilai probabilitas dari output `model.predict_proba(new_data)[:, 1]` di sini, misalnya: 85.73% untuk positif, 14.27% untuk negatif)._
-
-### **Catatan**
-
-- Proses inference menunjukkan model dapat memprediksi risiko penyakit jantung pada data baru.
-- Hasil probabilitas mendukung pengambilan keputusan klinis untuk pencegahan dan penanganan.
-
----
-
-### **Bagian yang Perlu Kamu Isi**
-
-Berikut adalah daftar placeholder yang perlu kamu isi dengan nilai pasti berdasarkan output kode setelah menjalankannya:
-
-1. **Data Understanding**
-
-   - **Kondisi Data:**
-     - Duplikat: `[ISI NILAI DI SINI]` (Jalankan `df.duplicated().sum()` untuk cek jumlah duplikat).
-   - **Insight dari Eksplorasi dan Visualisasi:**
-     - Proporsi kelas `HeartDisease`: `[ISI NILAI DI SINI]` (Lihat countplot, hitung persentase kelas 0 dan 1).
-     - Rata-rata dan rentang `Age`: `[ISI NILAI DI SINI]` (Lihat `df.describe()` dan histogram).
-     - Rata-rata `RestingBP`: `[ISI NILAI DI SINI]` (Lihat `df.describe()`).
-     - Rata-rata `Cholesterol`: `[ISI NILAI DI SINI]` (Lihat `df.describe()`).
-     - Rata-rata dan rentang `MaxHR`: `[ISI NILAI DI SINI]` (Lihat `df.describe()` dan histogram).
-     - Rata-rata dan nilai negatif `Oldpeak`: `[ISI NILAI DI SINI]` (Lihat `df.describe()`).
-     - Risiko `ChestPainType` ASY: `[ISI NILAI DI SINI]` (Lihat countplot, hitung persentase positif).
-     - Korelasi `ExerciseAngina` = Y: `[ISI NILAI DI SINI]` (Lihat countplot, analisis risiko).
-     - Korelasi `Oldpeak` vs `HeartDisease`: `[ISI NILAI DI SINI]` (Lihat heatmap).
-     - Korelasi `MaxHR` vs `HeartDisease`: `[ISI NILAI DI SINI]` (Lihat heatmap).
-     - Korelasi `Age` vs `HeartDisease`: `[ISI NILAI DI SINI]` (Lihat heatmap).
-
-2. **Evaluasi Model**
-
-   - **Akurasi:** `[ISI NILAI DI SINI]` (Isi dari output `accuracy_score(y_test, y_pred)`).
-   - **Classification Report:** `[ISI NILAI DI SINI]` (Salin seluruh output `classification_report(y_test, y_pred)`).
-   - **AUC Score:** `[ISI NILAI DI SINI]` (Isi dari output `roc_auc_score(y_test, y_proba)`).
-
-3. **Inference**
-   - **Prediksi Risiko Penyakit Jantung:** `[ISI NILAI DI SINI]` (Isi hasil dari `model.predict(new_data)`, misalnya "Penyakit Jantung").
-   - **Probabilitas Prediksi:**
-     - Positif: `[ISI NILAI DI SINI]%` (Isi dari `model.predict_proba(new_data)[:, 1] * 100`).
-     - Negatif: `[ISI NILAI DI SINI]%` (Hitung 100 - nilai probabilitas positif).
-
-### **Catatan**
-
-- Jalankan kode di notebook untuk mendapatkan nilai-nilai aktual dari output (misalnya `df.describe()`, `df.duplicated().sum()`, hasil metrik evaluasi, dan prediksi).
-- Ganti semua `[ISI NILAI DI SINI]` dengan hasil yang kamu peroleh.
-- Pastikan file gambar (confusion matrix, ROC curve, feature importance) tersimpan di folder `assets/` dan sesuaikan nama file di laporan jika perlu (misalnya, `image-confusion-matrix.png`).
-
-Jika ada revisi tambahan, beri tahu saya!
